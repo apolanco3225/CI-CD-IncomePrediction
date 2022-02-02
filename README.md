@@ -1,3 +1,5 @@
+[![Python 3.6](https://github.com/apolanco3225/Deploying-a-Machine-Learning-Model-on-Heroku-with-FastAPI/actions/workflows/main.yml/badge.svg)](https://github.com/apolanco3225/Deploying-a-Machine-Learning-Model-on-Heroku-with-FastAPI/actions/workflows/main.yml)
+
 Working in a command line environment is recommended for ease of use with git and dvc. If on Windows, WSL1 or 2 is recommended.
 
 # Environment Set up
