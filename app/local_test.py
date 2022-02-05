@@ -51,4 +51,4 @@ def test_post_malformed(client):
         "hoursPerWeek": 60,
         "nativeCountry": "United-States"
     })
-    assert r.status_code == 422
+    assert r.status_code == 422 
