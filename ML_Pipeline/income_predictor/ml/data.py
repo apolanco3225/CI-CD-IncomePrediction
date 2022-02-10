@@ -1,9 +1,54 @@
+"""
+This module performs preprocessing to the income data
+Author: Arturo Polanco
+Date: February 2022
+"""
 import numpy as np
+import pandas as pd
 from sklearn.preprocessing import LabelBinarizer, OneHotEncoder
 
+def column_processing(column):
+    column = column.replace(" ", "")
+    column = column.replace("-", "_")
+    return column
+    
+
+
+def data_cleaning_steps(data):
+    """
+    Clean the dataset
+    """
+    # rename variables removing white spaces and dashes
+    new_columns = map(column_processing, data.columns)
+    new_columns = list(new_columns)
+    data.columns = new_columns
+    # rename variables to more descriptive names
+    data.rename(
+        columns={
+            "fnlgt":"final_weight",
+            "education_num":"user_education_id",
+        }, 
+        inplace=True
+    )
+    # removing whitespaces in rows
+    data.replace(' ', '', regex=True, inplace=True)
+    data.replace('?', np.nan, inplace=True)
+    data.dropna(inplace=True)
+    data.drop_duplicates(inplace=True)
+    return data
+
+def clean_data(raw_data_path, clean_data_path):
+    data_df = pd.read_csv(raw_data_path)
+    clean_data_df = data_cleaning_steps(data_df)
+    clean_data_df.to_csv(clean_data_path, index=False)
 
 def process_data(
-    X, categorical_features=[], label=None, training=True, encoder=None, lb=None
+    X, 
+    categorical_features=[], 
+    label=None, 
+    training=True, 
+    encoder=None, 
+    lb=None
 ):
     """ Process the data used in the machine learning pipeline.
 
@@ -68,4 +113,3 @@ def process_data(
 
     X = np.concatenate([X_continuous, X_categorical], axis=1)
     return X, y, encoder, lb
-
