@@ -1,3 +1,9 @@
+"""
+Script to serve income prediction model as API.
+Author: Arturo Polanco
+Date: February 2022
+"""
+   
 import os
 import yaml
 
