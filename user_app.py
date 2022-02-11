@@ -35,14 +35,13 @@ async def get_items():
     return {"message": "Aloha!"}
 
 
-@app.post("/predict")
+@app.post("/predict/")
 async def inference(sample:ModelInput):
 
 
 
     prediction = inference(sample)
 
-    #prediction = "holi"
     return {"prediction": prediction}
 
 
