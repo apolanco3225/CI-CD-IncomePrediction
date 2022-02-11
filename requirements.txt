@@ -4,3 +4,4 @@ pydantic
 typing
 requests
 black
+gradio
