@@ -9,9 +9,9 @@ lint:
 	pylint --disable=R,C *.py
 
 deploy:
-	uvicorn app.main:app 
+	uvicorn user_app:app 
 
 test:
-	python -m pytest -vv --cov=hello test_hello.py
+	python -m pytest -vv --cov=hello test_local.py
 
-all: install format lint deploy test
+all: install format lint test deploy 
