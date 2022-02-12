@@ -1,4 +1,8 @@
-
+"""
+Script to test API.
+Author: Arturo Polanco
+Date: February 2022
+"""
 
 from fastapi.testclient import TestClient
 
