@@ -6,3 +6,5 @@ requests
 black
 gradio
 pylint
+joblib
+yaml
