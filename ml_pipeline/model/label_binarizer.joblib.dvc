@@ -1,0 +1,4 @@
+outs:
+- md5: 445a4e3578aa35314d90e3eef0959580
+  size: 464
+  path: label_binarizer.joblib
