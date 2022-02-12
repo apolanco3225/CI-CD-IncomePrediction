@@ -8,3 +8,6 @@ gradio
 pylint
 joblib
 pyyaml
+pytest
+sklearn
+hydra-core
