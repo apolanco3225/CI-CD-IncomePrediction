@@ -33,7 +33,7 @@ async def get_items():
 
 
 @app.post("/predict/")
-async def inference(sample: ModelInput):
+async def model_inference(sample: ModelInput):
     """
     Prediction endpoint
     """
@@ -48,8 +48,8 @@ def inference(sample):
     """
 
     # importing values from config file
-    with open('ml_pipeline/config.yml') as f:
-        config = yaml.load(f)
+    with open('ml_pipeline/config.yml', encoding='utf8') as file:
+        config = yaml.load(file)
 
     cat_features = config["data"]["cat_features"]
     artifacts_path = "ml_pipeline/model"
