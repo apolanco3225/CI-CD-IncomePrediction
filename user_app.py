@@ -4,8 +4,7 @@ Author: Arturo Polanco
 Date: February 2022
 """
 # import necessary packages
-import os
-import sys
+
 from fastapi import FastAPI
 from schema import ModelInput
 from inference_pipeline import inference
