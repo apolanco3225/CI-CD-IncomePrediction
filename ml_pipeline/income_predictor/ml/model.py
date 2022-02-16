@@ -33,7 +33,7 @@ def train_model(X_train, y_train):
         Trained machine learning model.
     """
     cv = StratifiedKFold(n_splits=10, shuffle=True, random_state=1)
-    model = LogisticRegression()
+    model = LogisticRegression(solver='lbfgs', max_iter=100)
     model.fit(X_train, y_train)
     scores = cross_val_score(model, X_train, y_train, scoring='accuracy',
                              cv=cv, n_jobs=-1)
@@ -82,6 +82,45 @@ def inference(model, X):
     preds = model.predict(X)
     return preds
 
+def scores(
+    model, 
+    test_data, 
+    encoder,
+    lb, 
+    cat_features, 
+    ):
+    """
+    Compute score in test set
+    ------
+    model: joblib file
+        Trained model that will be tested
+    test_features: np.array
+        Features in the test set
+    encoder : sklearn.preprocessing._encoders.OneHotEncoder
+        Trained sklearn OneHotEncoder, only used if training=False.
+    lb : sklearn.preprocessing._label.LabelBinarizer
+        Trained sklearn LabelBinarizer, only used if training=False.
+    Return
+        precision_score
+        recall_score
+        f_beta_score
+        
+    -------
+    """
+
+    test_features, test_label, _, _ = process_data(
+        test_data,
+        categorical_features=cat_features, training=False,
+        label="salary", encoder=encoder, lb=lb)
+
+    predictions = model.predict(test_features)
+
+    precision_score, recall_score, f_beta_score = compute_model_metrics(test_label, predictions)
+
+    return precision_score, recall_score, f_beta_score
+
+
+
 
 def scores_in_slices(
     model, 
@@ -124,5 +163,5 @@ def scores_in_slices(
 
                 metrics_slice = f"{category} - Precision:{precision_score} Recall:{recall_score} F Beta Score: {f_beta_score}"
 
-                logging.info(metrics_slice)
+                #logging.info(metrics_slice)
                 file.write(metrics_slice  + '\n')

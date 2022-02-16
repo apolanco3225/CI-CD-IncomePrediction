@@ -1,0 +1,5 @@
+[2022-02-16 04:42:06,914][root][INFO] - Cleaning data and saving clean version
+[2022-02-16 04:42:07,734][root][INFO] - Train/Test model procedure started
+[2022-02-16 04:42:09,651][root][INFO] - Accuracy mean: 0.7896398864243692
+[2022-02-16 04:42:09,651][root][INFO] - Accuracy std: 0.003114594277021894
+[2022-02-16 04:42:09,653][root][INFO] - Score check procedure started
